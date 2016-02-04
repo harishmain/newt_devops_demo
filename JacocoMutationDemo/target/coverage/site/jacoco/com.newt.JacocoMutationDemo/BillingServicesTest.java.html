@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>BillingServicesTest.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MutationDemo JaCoCo</a> &gt; <a href="index.source.html" class="el_package">com.newt.JacocoMutationDemo</a> &gt; <span class="el_source">BillingServicesTest.java</span></div><h1>BillingServicesTest.java</h1><pre class="source lang-java linenums">package com.newt.JacocoMutationDemo;
+
+import static org.junit.Assert.*;
+
+import java.io.IOException;
+
+import org.junit.Test;
+
+import com.newt.JacocoMutationDemo.bean.AccountProfile;
+import com.newt.JacocoMutationDemo.bean.AccountSummary;
+import com.newt.JacocoMutationDemo.dao.AccountProfileDaoImpl;
+import com.newt.JacocoMutationDemo.dao.AccountSummaryDaoImpl;
+import com.newt.JacocoMutationDemo.services.BillingServices;
+
+<span class="fc" id="L15">public class BillingServicesTest {</span>
+
+<span class="fc" id="L17">	int account_no=0;</span>
+<span class="fc" id="L18">	String userid=null;</span>
+<span class="fc" id="L19">	String password=null;</span>
+	
+<span class="fc" id="L21">	double previous_balance=0.00;</span>
+<span class="fc" id="L22">	double current_balance=0.00;</span>
+<span class="fc" id="L23">	double sales_tax=0.00;</span>
+<span class="fc" id="L24">	double subtotal_bill_amount=0.00;</span>
+<span class="fc" id="L25">	double total_bill_amount=0.00;</span>
+			
+<span class="fc" id="L27">	AccountProfileDaoImpl profiledao = new AccountProfileDaoImpl();</span>
+<span class="fc" id="L28">	AccountProfile profileBean = new AccountProfile();</span>
+	
+<span class="fc" id="L30">	AccountSummaryDaoImpl summarydao = new AccountSummaryDaoImpl();</span>
+<span class="fc" id="L31">	AccountSummary summaryBean = new AccountSummary();</span>
+	
+	public void setAccountNo(int account_no){
+<span class="fc" id="L34">		this.account_no=account_no;</span>
+<span class="fc" id="L35">		setProfileBean(account_no);</span>
+<span class="fc" id="L36">	}</span>
+	
+	public void setAccountCredentials(int account_no, String userid, String password){
+<span class="fc" id="L39">		this.account_no=account_no;</span>
+<span class="fc" id="L40">		this.userid=userid;</span>
+<span class="fc" id="L41">		this.password=password;</span>
+		
+<span class="fc" id="L43">		setProfileBean(account_no);</span>
+<span class="fc" id="L44">		setSummaryBean(account_no);</span>
+<span class="fc" id="L45">	}</span>
+	
+	
+	
+	public void setProfileBean(int account_no){
+<span class="fc" id="L50">		this.profileBean=profiledao.getAccountProfileBean(account_no);</span>
+<span class="fc" id="L51">	}</span>
+	
+	public void setSummaryBean(int account_no){
+<span class="fc" id="L54">		this.summaryBean=summarydao.getAccountSummaryBean(account_no);</span>
+<span class="fc" id="L55">	}</span>
+	
+<span class="fc" id="L57">	BillingServices billingservicesObj = null;</span>
+	
+	@Test
+	public void testBillingServices() {	
+		
+<span class="fc" id="L62">		this.account_no=2000001;</span>
+<span class="fc" id="L63">		setAccountNo(2000001);</span>
+		
+<span class="fc" id="L65">		billingservicesObj = new BillingServices(profileBean);</span>
+		
+		try {
+<span class="fc" id="L68">			assertEquals(&quot;tc1 :: account number matching with billing services bean&quot;, this.account_no, profileBean.getAccount_no());	</span>
+<span class="nc" id="L69">		} catch (Exception ex) {</span>
+<span class="nc" id="L70">			System.out.println(&quot;Exception: &quot;+ex);</span>
+<span class="nc" id="L71">			fail(&quot;testBillingServices :: FAILED :: account number not found in billingservicesObj&quot;); </span>
+<span class="fc" id="L72">		}</span>
+<span class="fc" id="L73">	}</span>
+
+	@Test
+	public void testAuthenticateUserCredentials() {
+		
+<span class="fc" id="L78">		this.userid=&quot;user1&quot;;</span>
+<span class="fc" id="L79">		this.password=&quot;1234&quot;;</span>
+		
+<span class="fc" id="L81">		setAccountCredentials(2000001, this.userid, this.password );</span>
+<span class="fc" id="L82">		billingservicesObj = new BillingServices(profileBean);</span>
+		
+<span class="fc" id="L84">		boolean loginstatus=false;</span>
+		
+		try{
+<span class="fc" id="L87">			loginstatus=billingservicesObj.authenticateUserCredentials(this.userid, this.password);</span>
+<span class="fc" id="L88">			assertEquals(&quot;tc2 :: authentication success&quot;, true, loginstatus);</span>
+<span class="nc" id="L89">		}catch (Exception ex) {</span>
+<span class="nc" id="L90">			System.out.println(&quot;Exception: &quot;+ex);</span>
+<span class="nc" id="L91">			fail(&quot;testAuthenticateUserCredentials :: FAILED :: Invalid credentials &quot;); </span>
+<span class="fc" id="L92">		}</span>
+		
+<span class="fc" id="L94">	}</span>
+	
+	@Test
+	public void testgetAccountProfile(){
+		
+<span class="fc" id="L99">		this.userid=&quot;user1&quot;;</span>
+<span class="fc" id="L100">		this.password=&quot;1234&quot;;</span>
+		
+<span class="fc" id="L102">		setAccountCredentials(2000001, this.userid, this.password );</span>
+<span class="fc" id="L103">		billingservicesObj = new BillingServices(profileBean);</span>
+		
+		try{
+			
+<span class="fc" id="L107">			billingservicesObj.getAccountProfile();</span>
+			
+<span class="nc" id="L109">		}catch (Exception ex) {</span>
+<span class="nc" id="L110">			System.out.println(&quot;Exception: &quot;+ex);</span>
+<span class="nc" id="L111">			fail(&quot;testgetAccountProfile :: FAILED :: Account Profile&quot;); </span>
+<span class="fc" id="L112">		}</span>
+		
+<span class="fc" id="L114">	}</span>
+	
+	@Test
+	public void testgetSalesTaxAmount(){
+		
+<span class="fc" id="L119">		this.userid=&quot;user1&quot;;</span>
+<span class="fc" id="L120">		this.password=&quot;1234&quot;;</span>
+<span class="fc" id="L121">		double actual_sales_tax=0.00;</span>
+<span class="fc" id="L122">		double expected_sales_tax=11.8125;			//11.8125</span>
+<span class="fc" id="L123">		double actual_subtotal_bill_amount=0.00;</span>
+<span class="fc" id="L124">		double actual_previous_balance=0.00;</span>
+<span class="fc" id="L125">		double actual_current_balance=0.00;</span>
+		
+<span class="fc" id="L127">		setAccountCredentials(2000001, this.userid, this.password );</span>
+<span class="fc" id="L128">		billingservicesObj = new BillingServices(profileBean, summaryBean);</span>
+		
+		try{
+			
+<span class="fc" id="L132">			actual_previous_balance=summaryBean.getPrevios_balance();</span>
+<span class="fc" id="L133">			actual_current_balance=summaryBean.getCurrent_balance();</span>
+			
+<span class="fc" id="L135">			actual_subtotal_bill_amount=actual_previous_balance+actual_current_balance;</span>
+			
+<span class="fc" id="L137">			actual_sales_tax=billingservicesObj.getSalesTaxAmount(actual_subtotal_bill_amount);</span>
+			
+<span class="fc" id="L139">			assertEquals(expected_sales_tax, actual_sales_tax, 0.0);</span>
+			
+<span class="nc" id="L141">		}catch(Exception e){</span>
+<span class="nc" id="L142">			System.out.println(&quot;testgetSalesTaxAmount, Exception: &quot;+e);</span>
+<span class="nc" id="L143">			fail(&quot;testgetSalesTaxAmount :: FAILED :: Sales Tax Amount not matching&quot;);</span>
+<span class="fc" id="L144">		}</span>
+		
+<span class="fc" id="L146">	}</span>
+	
+	@Test
+	public void testgetTotalBillAmount(){
+		
+<span class="fc" id="L151">		this.userid=&quot;user1&quot;;</span>
+<span class="fc" id="L152">		this.password=&quot;1234&quot;;</span>
+<span class="fc" id="L153">		double actual_total_bill_amount=0.00;</span>
+<span class="fc" id="L154">		double expected_bill_amount=200.8125;</span>
+		
+<span class="fc" id="L156">		setAccountCredentials(2000001, this.userid, this.password );</span>
+<span class="fc" id="L157">		billingservicesObj = new BillingServices(profileBean, summaryBean);</span>
+				
+		try{
+			
+<span class="fc" id="L161">			previous_balance=summaryBean.getPrevios_balance();</span>
+<span class="fc" id="L162">			current_balance=summaryBean.getCurrent_balance();</span>
+			
+<span class="fc" id="L164">			actual_total_bill_amount=billingservicesObj.getTotalBillAmount(previous_balance, current_balance);</span>
+
+<span class="fc" id="L166">			assertEquals(expected_bill_amount, actual_total_bill_amount, 0.0);</span>
+			
+<span class="nc" id="L168">		}catch(Exception e){</span>
+<span class="nc" id="L169">			System.out.println(&quot;testgetTotalBillAmount, Exception: &quot;+e);</span>
+<span class="nc" id="L170">			fail(&quot;testgetTotalBillAmount :: FAILED :: Total Bill Amount not matching&quot;);</span>
+<span class="fc" id="L171">		}</span>
+		
+		
+<span class="fc" id="L174">	}</span>
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

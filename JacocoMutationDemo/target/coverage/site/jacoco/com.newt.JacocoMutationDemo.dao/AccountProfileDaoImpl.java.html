@@ -1,0 +1,239 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>AccountProfileDaoImpl.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MutationDemo JaCoCo</a> &gt; <a href="index.source.html" class="el_package">com.newt.JacocoMutationDemo.dao</a> &gt; <span class="el_source">AccountProfileDaoImpl.java</span></div><h1>AccountProfileDaoImpl.java</h1><pre class="source lang-java linenums">package com.newt.JacocoMutationDemo.dao;
+
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+
+import com.newt.JacocoMutationDemo.bean.AccountProfile;
+import com.newt.JacocoMutationDemo.logger.Log4jWrapper;
+import com.newt.JacocoMutationDemo.util.PropertyLoader;
+
+/**
+ * @date 02/01/2016
+ * @author Harish Main
+ * @description Class contains Account Profile methods
+ *
+ */
+<span class="fc" id="L21">public class AccountProfileDaoImpl implements AccountProfileDao {</span>
+	
+<span class="fc" id="L23">	private final static Logger logger = Logger.getLogger(AccountProfileDaoImpl.class);</span>
+<span class="fc" id="L24">	static Log4jWrapper slog = new Log4jWrapper();</span>
+	
+<span class="fc" id="L26">	PropertyLoader propertyloader = new PropertyLoader();</span>
+
+	/**
+	 * @date 02/01/2016
+	 * @author Harish Main
+	 * @description Method used to find and display the Account number passed.
+	 */
+	public void findAccount(int account_no) {
+		
+<span class="nc" id="L35">		logger.debug(&quot;AccountProfileDaoImpl :: findAccount(), invoked...&quot;);</span>
+		
+<span class="nc" id="L37">		List&lt;AccountProfile&gt; profileList = new ArrayList&lt;AccountProfile&gt;();</span>
+		
+		try{
+			//get account profile for given account number
+<span class="nc" id="L41">			profileList=getAccountProfileList(account_no);</span>
+			
+<span class="nc" id="L43">			displayAccountProfile(profileList);</span>
+			
+<span class="nc" id="L45">		}catch(Exception e){</span>
+<span class="nc" id="L46">			logger.error(&quot;AccountProfileDaoImpl :: findAccount(), Exception: &quot;+e);</span>
+<span class="nc" id="L47">		}</span>
+<span class="nc" id="L48">	}</span>
+	
+	public List&lt;AccountProfile&gt; getAccountProfileList(int account_no) {
+		
+<span class="nc" id="L52">		logger.debug(&quot;AccountProfileDaoImpl :: getAccountProfileist(), invoked...&quot;);</span>
+<span class="nc" id="L53">		List&lt;AccountProfile&gt; tempList = new ArrayList&lt;AccountProfile&gt;();</span>
+<span class="nc" id="L54">		List&lt;AccountProfile&gt; profileList = new ArrayList&lt;AccountProfile&gt;();</span>
+<span class="nc" id="L55">		AccountProfile bean = null;</span>
+		
+		try{
+			
+<span class="nc" id="L59">			tempList=getAllAccountProfiles();</span>
+			
+<span class="nc" id="L61">			Iterator&lt;AccountProfile&gt; itr = tempList.iterator();</span>
+			
+<span class="nc bnc" id="L63" title="All 2 branches missed.">			while(itr.hasNext()){</span>
+<span class="nc" id="L64">				bean = new AccountProfile();</span>
+<span class="nc" id="L65">				bean=itr.next();</span>
+				
+<span class="nc bnc" id="L67" title="All 2 branches missed.">				if(bean.getAccount_no()==account_no){</span>
+<span class="nc" id="L68">					profileList.add(bean);</span>
+<span class="nc" id="L69">					break;</span>
+				}
+				
+				
+			}
+
+			
+<span class="nc" id="L76">		}catch(Exception e){</span>
+<span class="nc" id="L77">			logger.error(&quot;AccountProfileDaoImpl :: getAccountProfileist(), Exception: &quot;+e);</span>
+<span class="nc" id="L78">		}</span>
+		
+<span class="nc" id="L80">		return profileList;</span>
+	}
+	
+	public AccountProfile getAccountProfileBean(int account_no) {
+		
+<span class="fc" id="L85">		logger.debug(&quot;AccountProfileDaoImpl :: getAccountProfileBean(), invoked...&quot;);</span>
+
+<span class="fc" id="L87">		List&lt;AccountProfile&gt; profileList = new ArrayList&lt;AccountProfile&gt;();</span>
+<span class="fc" id="L88">		AccountProfile bean = null;</span>
+		
+		try{
+			
+<span class="fc" id="L92">			profileList=getAllAccountProfiles();</span>
+			
+<span class="fc" id="L94">			Iterator&lt;AccountProfile&gt; itr = profileList.iterator();</span>
+			
+<span class="pc bpc" id="L96" title="1 of 2 branches missed.">			while(itr.hasNext()){</span>
+<span class="fc" id="L97">				bean = new AccountProfile();</span>
+<span class="fc" id="L98">				bean=itr.next();</span>
+				
+<span class="pc bpc" id="L100" title="1 of 2 branches missed.">				if(bean.getAccount_no()==account_no){</span>
+<span class="fc" id="L101">					break;</span>
+				}
+				
+				
+			}
+
+			
+<span class="nc" id="L108">		}catch(Exception e){</span>
+<span class="nc" id="L109">			logger.error(&quot;AccountProfileDaoImpl :: getAccountProfileBean(), Exception: &quot;+e);</span>
+<span class="fc" id="L110">		}</span>
+		
+<span class="fc" id="L112">		return bean;</span>
+	}	
+
+	/**
+	 * @date 02/01/2016
+	 * @author Harish Main
+	 * @description Method used to get the all Account Profiles from backend
+	 */
+	public List&lt;AccountProfile&gt; getAllAccountProfiles() {
+		
+<span class="fc" id="L122">		logger.debug(&quot;AccountProfileDaoImpl :: getAllAccountProfiles(), invoked...&quot;);</span>
+		
+<span class="fc" id="L124">		List&lt;AccountProfile&gt; profileList = new ArrayList&lt;AccountProfile&gt;();</span>
+<span class="fc" id="L125">		AccountProfile bean = null;</span>
+<span class="fc" id="L126">		SimpleDateFormat sdf = new SimpleDateFormat(&quot;M-dd-yyyy&quot;);</span>
+<span class="fc" id="L127">		Date date = null;</span>
+<span class="fc" id="L128">		String account_holder_name=null;</span>
+<span class="fc" id="L129">		String userid=null;</span>
+<span class="fc" id="L130">		String password=null;</span>
+		try{
+			//Hardcoding backend data
+			//Record-01
+<span class="fc" id="L134">			bean = new AccountProfile();</span>
+<span class="fc" id="L135">			bean.setAccount_no(2000001);</span>
+<span class="fc" id="L136">			account_holder_name=&quot;Blake Johnson&quot;;</span>
+<span class="fc" id="L137">			userid=propertyloader.getPropertyValue(&quot;userid1&quot;);	//&quot;user1&quot;;</span>
+<span class="fc" id="L138">			password=propertyloader.getPropertyValue(&quot;password1&quot;);	//&quot;1234&quot;;</span>
+<span class="fc" id="L139">			bean.setAccount_holder_name(account_holder_name);</span>
+<span class="fc" id="L140">			bean.setUserid(userid);</span>
+<span class="fc" id="L141">			bean.setPassword(password);</span>
+<span class="fc" id="L142">			bean.setAccount_name(&quot;Internet and TV Account&quot;);</span>
+<span class="fc" id="L143">			bean.setAccount_nick_name(&quot;John&quot;);		</span>
+<span class="fc" id="L144">			bean.setAddress(&quot;1300 W Walnut Hill Lanes, Irving, TX 75038&quot;);</span>
+<span class="fc" id="L145">			bean.setEmail_address(&quot;blake.johnson@mobile.com&quot;);</span>
+<span class="fc" id="L146">			bean.setPhone_no(&quot;(469) 456-3355&quot;);</span>
+<span class="fc" id="L147">			date = sdf.parse(&quot;01-26-2015&quot;);</span>
+<span class="fc" id="L148">			bean.setAccount_start_date(date);</span>
+<span class="fc" id="L149">			profileList.add(bean);</span>
+			
+			//Record-02
+<span class="fc" id="L152">			bean = new AccountProfile();</span>
+<span class="fc" id="L153">			bean.setAccount_no(2000002);	</span>
+<span class="fc" id="L154">			account_holder_name=&quot;Tina Page&quot;;</span>
+<span class="fc" id="L155">			userid=propertyloader.getPropertyValue(&quot;userid2&quot;);	//&quot;user2&quot;;</span>
+<span class="fc" id="L156">			password=propertyloader.getPropertyValue(&quot;password2&quot;);	//&quot;1234&quot;;</span>
+<span class="fc" id="L157">			bean.setAccount_holder_name(account_holder_name);</span>
+<span class="fc" id="L158">			bean.setUserid(userid);</span>
+<span class="fc" id="L159">			bean.setPassword(password);</span>
+<span class="fc" id="L160">			bean.setAccount_name(&quot;Internet Account&quot;);</span>
+<span class="fc" id="L161">			bean.setAccount_nick_name(&quot;Tina&quot;);		</span>
+<span class="fc" id="L162">			bean.setAddress(&quot;4907 N Glen Dr, Irving 75063&quot;);</span>
+<span class="fc" id="L163">			bean.setEmail_address(&quot;tina.page@mobile.com&quot;);</span>
+<span class="fc" id="L164">			bean.setPhone_no(&quot;(972) 210-4256&quot;);</span>
+<span class="fc" id="L165">			date = sdf.parse(&quot;11-02-2014&quot;);</span>
+<span class="fc" id="L166">			bean.setAccount_start_date(date);</span>
+<span class="fc" id="L167">			profileList.add(bean);</span>
+			
+			//Record-02
+<span class="fc" id="L170">			bean = new AccountProfile();</span>
+<span class="fc" id="L171">			bean.setAccount_no(2000003);	</span>
+<span class="fc" id="L172">			account_holder_name=&quot;Trey Henderson&quot;;</span>
+<span class="fc" id="L173">			userid=propertyloader.getPropertyValue(&quot;userid3&quot;);	//&quot;user3&quot;;</span>
+<span class="fc" id="L174">			password=propertyloader.getPropertyValue(&quot;password3&quot;);	//&quot;1234&quot;;</span>
+<span class="fc" id="L175">			bean.setAccount_holder_name(account_holder_name);</span>
+<span class="fc" id="L176">			bean.setUserid(userid);</span>
+<span class="fc" id="L177">			bean.setPassword(password);</span>
+<span class="fc" id="L178">			bean.setAccount_name(&quot;TV Account&quot;);</span>
+<span class="fc" id="L179">			bean.setAccount_nick_name(&quot;Troy&quot;);		</span>
+<span class="fc" id="L180">			bean.setAddress(&quot;1200 Grey Sparrow Dr, Katy, TX 77402&quot;);</span>
+<span class="fc" id="L181">			bean.setEmail_address(&quot;trey.henderson@mobile.com&quot;);</span>
+<span class="fc" id="L182">			bean.setPhone_no(&quot;(214) 7454-0792&quot;);</span>
+<span class="fc" id="L183">			date = sdf.parse(&quot;10-15-2013&quot;);</span>
+<span class="fc" id="L184">			bean.setAccount_start_date(date);</span>
+<span class="fc" id="L185">			profileList.add(bean);</span>
+			
+<span class="nc" id="L187">		}catch(Exception e){</span>
+<span class="nc" id="L188">			logger.error(&quot;AccountProfileDaoImpl :: getAllAccountProfiles(), Exception: &quot;+e);</span>
+<span class="fc" id="L189">		}</span>
+		
+<span class="fc" id="L191">		return profileList;</span>
+	
+		
+	}
+	
+
+	
+
+	public void displayAccountProfile(List&lt;AccountProfile&gt; profileList) {
+		
+<span class="nc" id="L201">		logger.debug(&quot;AccountProfileDaoImpl :: displayAccountProfile(), invoked...&quot;);</span>
+		
+		//AccountProfile bean = new AccountProfile();
+		try{
+			
+<span class="nc bnc" id="L206" title="All 4 branches missed.">			if(profileList!=null &amp;&amp; profileList.size()&gt;0){</span>
+<span class="nc" id="L207">				logger.info(&quot;--------------------------------------------------&quot;);</span>
+<span class="nc" id="L208">				logger.info(&quot;       MONTHLY ACCOUNT STATEMENT                  &quot;);</span>
+<span class="nc" id="L209">				logger.info(&quot;--------------------------------------------------&quot;);</span>
+<span class="nc" id="L210">				logger.info(&quot;&quot;);</span>
+<span class="nc bnc" id="L211" title="All 2 branches missed.">				for(AccountProfile bean : profileList){</span>
+<span class="nc" id="L212">					logger.info(&quot;Account            : &quot;+bean.getAccount_no());</span>
+<span class="nc" id="L213">					logger.info(&quot;Username           : &quot;+bean.getUserid());</span>
+<span class="nc" id="L214">					logger.info(&quot;Account Holder Name: &quot;+bean.getAccount_holder_name());</span>
+<span class="nc" id="L215">					logger.info(&quot;Account Name       : &quot;+bean.getAccount_name());</span>
+<span class="nc" id="L216">					logger.info(&quot;Phone No           : &quot;+bean.getPhone_no());</span>
+<span class="nc" id="L217">					logger.info(&quot;Email Address      : &quot;+bean.getEmail_address());</span>
+<span class="nc" id="L218">				}</span>
+				
+			}else{
+<span class="nc" id="L221">				logger.warn(&quot;&quot;);</span>
+<span class="nc" id="L222">				logger.warn(&quot;*** No Account found ***&quot;);</span>
+<span class="nc" id="L223">				logger.warn(&quot;please check your account number and try again...&quot;);</span>
+<span class="nc" id="L224">				logger.warn(&quot;&quot;);</span>
+			}
+			
+			
+<span class="nc" id="L228">		}catch(Exception e){</span>
+<span class="nc" id="L229">			logger.error(&quot;AccountProfileDaoImpl :: displayAccountProfile(), Exception: &quot;+e);</span>
+<span class="nc" id="L230">		}</span>
+		
+<span class="nc" id="L232">	}</span>
+
+
+
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

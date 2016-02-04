@@ -1,0 +1,274 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>AccountSummaryDaoImpl.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MutationDemo JaCoCo</a> &gt; <a href="index.source.html" class="el_package">com.newt.JacocoMutationDemo.dao</a> &gt; <span class="el_source">AccountSummaryDaoImpl.java</span></div><h1>AccountSummaryDaoImpl.java</h1><pre class="source lang-java linenums">package com.newt.JacocoMutationDemo.dao;
+
+import java.text.DecimalFormat;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+
+import org.apache.log4j.Logger;
+
+import com.newt.JacocoMutationDemo.bean.AccountProfile;
+import com.newt.JacocoMutationDemo.bean.AccountSummary;
+import com.newt.JacocoMutationDemo.constants.ApplicationConstants;
+import com.newt.JacocoMutationDemo.logger.Log4jWrapper;
+
+<span class="fc" id="L17">public class AccountSummaryDaoImpl implements AccountSummaryDao, ApplicationConstants {</span>
+	
+<span class="fc" id="L19">	private final static Logger logger = Logger.getLogger(AccountSummaryDaoImpl.class);</span>
+<span class="fc" id="L20">	static Log4jWrapper slog = new Log4jWrapper();</span>
+	
+	/**
+	 * @date 02/01/2016
+	 * @author Harish Main
+	 * @description Method used to find and display the Account number passed.
+	 */
+	public void findSummaryAccount(int account_no) {
+		
+<span class="nc" id="L29">		logger.debug(&quot;AccountSummaryDaoImpl :: findSummaryAccount(), invoked... account_no:&quot;+account_no);</span>
+		
+<span class="nc" id="L31">		List&lt;AccountSummary&gt; summaryList = new ArrayList&lt;AccountSummary&gt;();</span>
+		
+		try{
+			//get account profile for given account number
+<span class="nc" id="L35">			summaryList=getAccountSummaryList(account_no);			</span>
+<span class="nc" id="L36">			displayAccountSummary(summaryList);</span>
+			
+<span class="nc" id="L38">		}catch(Exception e){</span>
+<span class="nc" id="L39">			logger.error(&quot;AccountProfileDaoImpl :: findSummaryAccount(), Exception: &quot;+e);</span>
+<span class="nc" id="L40">		}</span>
+		
+<span class="nc" id="L42">	}</span>
+	
+	
+	/**
+	 * 
+	 */
+	public List&lt;AccountSummary&gt; getAccountSummaryList(int account_no) {
+
+<span class="nc" id="L50">		logger.debug(&quot;AccountSummaryDaoImpl :: getAccountSummaryList(), invoked...&quot;);</span>
+		
+<span class="nc" id="L52">		List&lt;AccountSummary&gt; tempList = new ArrayList&lt;AccountSummary&gt;();</span>
+<span class="nc" id="L53">		List&lt;AccountSummary&gt; accountsummaryList = new ArrayList&lt;AccountSummary&gt;();</span>
+<span class="nc" id="L54">		AccountSummary bean = null;</span>
+		try{
+			
+<span class="nc" id="L57">			tempList=getAllAccountSummary();</span>
+			
+<span class="nc" id="L59">			Iterator&lt;AccountSummary&gt; itr = tempList.iterator();</span>
+			
+<span class="nc bnc" id="L61" title="All 2 branches missed.">			while(itr.hasNext()){</span>
+<span class="nc" id="L62">				bean = new AccountSummary();</span>
+<span class="nc" id="L63">				bean=itr.next();</span>
+				
+<span class="nc bnc" id="L65" title="All 2 branches missed.">				if(bean.getAccount_no()==account_no){</span>
+<span class="nc" id="L66">					accountsummaryList.add(bean);</span>
+<span class="nc" id="L67">					break;</span>
+				}
+				
+				
+			}
+			
+			
+<span class="nc" id="L74">		}catch(Exception e){</span>
+<span class="nc" id="L75">			logger.error(&quot;AccountSummaryDaoImpl :: getAccountSummaryList(), Exception: &quot;+e);</span>
+<span class="nc" id="L76">		}</span>
+		
+<span class="nc" id="L78">		return accountsummaryList;</span>
+	
+		
+	}
+	
+	/**
+	 * 
+	 */
+	public AccountSummary getAccountSummaryBean(int account_no) {
+
+<span class="fc" id="L88">		logger.debug(&quot;AccountSummaryDaoImpl :: getAccountSummaryBean(), invoked...&quot;);</span>
+		
+<span class="fc" id="L90">		AccountSummary bean = new AccountSummary();;</span>
+<span class="fc" id="L91">		List&lt;AccountSummary&gt; accountsummaryList = new ArrayList&lt;AccountSummary&gt;();</span>
+		
+		try{
+			
+<span class="fc" id="L95">			accountsummaryList=getAllAccountSummary();</span>
+			
+<span class="fc" id="L97">			Iterator&lt;AccountSummary&gt; itr = accountsummaryList.iterator();</span>
+			
+<span class="pc bpc" id="L99" title="1 of 2 branches missed.">			while(itr.hasNext()){</span>
+<span class="fc" id="L100">				bean = new AccountSummary();</span>
+<span class="fc" id="L101">				bean=itr.next();</span>
+				
+<span class="pc bpc" id="L103" title="1 of 2 branches missed.">				if(bean.getAccount_no()==account_no){</span>
+<span class="fc" id="L104">					break;</span>
+				}
+				
+				
+			}
+			
+			
+<span class="nc" id="L111">		}catch(Exception e){</span>
+<span class="nc" id="L112">			logger.error(&quot;AccountSummaryDaoImpl :: getAccountSummaryBean(), Exception: &quot;+e);</span>
+<span class="fc" id="L113">		}</span>
+		
+<span class="fc" id="L115">		return bean;</span>
+	
+		
+	}	
+
+	public List&lt;AccountSummary&gt; getAllAccountSummary() {
+
+<span class="fc" id="L122">		logger.debug(&quot;AccountSummaryDaoImpl :: getAllAccountSummary(), invoked...&quot;);</span>
+<span class="fc" id="L123">		List&lt;AccountSummary&gt; accountsummaryList = new ArrayList&lt;AccountSummary&gt;();</span>
+<span class="fc" id="L124">		AccountSummary bean = null;</span>
+<span class="fc" id="L125">		SimpleDateFormat sdf = new SimpleDateFormat(&quot;M-dd-yyyy&quot;);</span>
+<span class="fc" id="L126">		Date billdate = null;</span>
+<span class="fc" id="L127">		double prev_balance=0.00;</span>
+<span class="fc" id="L128">		double curr_balance=0.00;</span>
+		
+		try{
+			
+			//Hardcoding backend data
+			//Record-01
+<span class="fc" id="L134">			bean = new AccountSummary();</span>
+<span class="fc" id="L135">			bean.setAccount_no(2000001);</span>
+<span class="fc" id="L136">			billdate = sdf.parse(BILL_DATE);</span>
+<span class="fc" id="L137">			bean.setBill_date(billdate);</span>
+			
+<span class="fc" id="L139">			prev_balance=0.00;</span>
+<span class="fc" id="L140">			curr_balance=189.00;			</span>
+<span class="fc" id="L141">			bean.setPrevios_balance(prev_balance);</span>
+<span class="fc" id="L142">			bean.setCurrent_balance(curr_balance);</span>
+<span class="fc" id="L143">			accountsummaryList.add(bean);</span>
+			
+			//Record-02
+<span class="fc" id="L146">			bean = new AccountSummary();</span>
+<span class="fc" id="L147">			bean.setAccount_no(2000002);</span>
+<span class="fc" id="L148">			billdate = sdf.parse(BILL_DATE);</span>
+<span class="fc" id="L149">			bean.setBill_date(billdate);</span>
+			
+<span class="fc" id="L151">			prev_balance=0.00;</span>
+<span class="fc" id="L152">			curr_balance=144.15;			</span>
+<span class="fc" id="L153">			bean.setPrevios_balance(prev_balance);</span>
+<span class="fc" id="L154">			bean.setCurrent_balance(curr_balance);</span>
+<span class="fc" id="L155">			accountsummaryList.add(bean);	</span>
+			
+			//Record-03
+<span class="fc" id="L158">			bean = new AccountSummary();</span>
+<span class="fc" id="L159">			bean.setAccount_no(2000003);</span>
+<span class="fc" id="L160">			billdate = sdf.parse(BILL_DATE);</span>
+<span class="fc" id="L161">			bean.setBill_date(billdate);</span>
+			
+<span class="fc" id="L163">			prev_balance=64.45;</span>
+<span class="fc" id="L164">			curr_balance=201.99;			</span>
+<span class="fc" id="L165">			bean.setPrevios_balance(prev_balance);</span>
+<span class="fc" id="L166">			bean.setCurrent_balance(curr_balance);</span>
+<span class="fc" id="L167">			accountsummaryList.add(bean);</span>
+
+			
+<span class="nc" id="L170">		}catch(Exception e){</span>
+<span class="nc" id="L171">			logger.error(&quot;AccountSummaryDaoImpl :: getAllAccountSummary(), Exception: &quot;+e);</span>
+<span class="fc" id="L172">		}</span>
+		
+<span class="fc" id="L174">		return accountsummaryList;</span>
+	
+		
+	
+	}
+
+
+
+	public void displayAccountSummary(List&lt;AccountSummary&gt; summaryList) {
+		
+<span class="nc" id="L184">		logger.debug(&quot;AccountSummaryDaoImpl :: displayAccountSummary(), invoked...&quot;);</span>
+<span class="nc" id="L185">		double subtotal_bill_amount=0.00;</span>
+<span class="nc" id="L186">		double total_bill_amount=0.00;</span>
+<span class="nc" id="L187">		double sales_tax_amount=0.00;</span>
+<span class="nc" id="L188">		DecimalFormat salestax_amt_formatted = new DecimalFormat(&quot;#0.00&quot;);</span>
+		try{
+			
+<span class="nc bnc" id="L191" title="All 4 branches missed.">			if(summaryList!=null &amp;&amp; summaryList.size()&gt;0){</span>
+				
+<span class="nc" id="L193">				logger.info(&quot;--------------------------------------------------&quot;);</span>
+<span class="nc" id="L194">				logger.info(&quot;       A C C O U N T   S U M M A R Y              &quot;);</span>
+<span class="nc" id="L195">				logger.info(&quot;--------------------------------------------------&quot;);</span>
+<span class="nc" id="L196">				logger.info(&quot;&quot;);</span>
+<span class="nc bnc" id="L197" title="All 2 branches missed.">				for(AccountSummary bean : summaryList){</span>
+					// Get Bill Total Amount					
+<span class="nc" id="L199">					subtotal_bill_amount=getBillSubTotalAmount(bean);</span>
+					
+					// Calculate Sales Tax Amount
+<span class="nc" id="L202">					sales_tax_amount=getSalesTaxAmount(subtotal_bill_amount);</span>
+<span class="nc" id="L203">					total_bill_amount=subtotal_bill_amount+sales_tax_amount;</span>
+					
+<span class="nc" id="L205">					logger.info(&quot;Bill Date          : &quot;+bean.getBill_date());</span>
+<span class="nc" id="L206">					logger.info(&quot;Previous balance   : &quot;+bean.getPrevios_balance());</span>
+<span class="nc" id="L207">					logger.info(&quot;Current balance    : &quot;+bean.getCurrent_balance());</span>
+					//logger.info(&quot;Sales Tax          : &quot;+sales_tax_amount+&quot;%&quot;);
+<span class="nc" id="L209">					logger.info(&quot;Sales Tax          : &quot;+salestax_amt_formatted.format(sales_tax_amount)+&quot;%&quot;);</span>
+<span class="nc" id="L210">					logger.info(&quot;--------------------------------------------------&quot;);</span>
+<span class="nc" id="L211">					logger.info(&quot;Total Bill Amount  : &quot;+total_bill_amount);</span>
+<span class="nc" id="L212">					logger.info(&quot;--------------------------------------------------&quot;);</span>
+<span class="nc" id="L213">					logger.info(&quot;&quot;);</span>
+<span class="nc" id="L214">				}</span>
+				
+			}else{
+<span class="nc" id="L217">				logger.warn(&quot;&quot;);</span>
+<span class="nc" id="L218">				logger.warn(&quot;*** No Account Summary found ***&quot;);</span>
+<span class="nc" id="L219">				logger.warn(&quot;please check your account number and try again...&quot;);</span>
+<span class="nc" id="L220">				logger.warn(&quot;&quot;);</span>
+			}
+			
+			
+<span class="nc" id="L224">		}catch(Exception e){</span>
+<span class="nc" id="L225">			logger.error(&quot;AccountSummaryDaoImpl :: displayAccountSummary(), Exception: &quot;+e);</span>
+<span class="nc" id="L226">		}</span>
+		
+<span class="nc" id="L228">	}</span>
+	
+	public double getBillSubTotalAmount(AccountSummary bean){
+		
+<span class="nc" id="L232">		double prev_balance=0.00;</span>
+<span class="nc" id="L233">		double current_balance=0.00;</span>
+<span class="nc" id="L234">		double bill_total_amount=0.00;</span>
+		
+		try{
+			
+<span class="nc bnc" id="L238" title="All 2 branches missed.">			if(bean!=null){</span>
+<span class="nc" id="L239">				prev_balance=bean.getPrevios_balance();</span>
+<span class="nc" id="L240">				current_balance=bean.getCurrent_balance();	</span>
+<span class="nc" id="L241">				bill_total_amount=prev_balance+current_balance;				</span>
+			}
+			
+<span class="nc" id="L244">		}catch(Exception e){</span>
+<span class="nc" id="L245">			logger.error(&quot;AccountSummaryDaoImpl :: getBillSubTotalAmount(), Exception: &quot;+e);</span>
+<span class="nc" id="L246">		}</span>
+		
+<span class="nc" id="L248">		return bill_total_amount;</span>
+		
+	}
+	
+	public double getSalesTaxAmount(double bill_total_amount){
+		
+<span class="nc" id="L254">		double sales_tax_amount =0.00;</span>
+		
+		try{
+			
+<span class="nc bnc" id="L258" title="All 2 branches missed.">			if(bill_total_amount&gt;0){</span>
+<span class="nc" id="L259">				sales_tax_amount=(bill_total_amount*SALES_TAX_RATE)/100;</span>
+			}
+			
+			
+<span class="nc" id="L263">		}catch(Exception e){</span>
+<span class="nc" id="L264">			logger.error(&quot;AccountSummaryDaoImpl :: getBillTotalAmount(), Exception: &quot;+e);</span>
+<span class="nc" id="L265">		}</span>
+		
+<span class="nc" id="L267">		return sales_tax_amount;</span>
+		
+	}	
+	
+
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

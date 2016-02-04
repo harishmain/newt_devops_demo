@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>PropertyLoader.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MutationDemo JaCoCo</a> &gt; <a href="index.source.html" class="el_package">com.newt.JacocoMutationDemo.util</a> &gt; <span class="el_source">PropertyLoader.java</span></div><h1>PropertyLoader.java</h1><pre class="source lang-java linenums">package com.newt.JacocoMutationDemo.util;
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
+import java.io.Reader;
+import java.net.URL;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Properties;
+
+import org.apache.log4j.Logger;
+
+import com.newt.JacocoMutationDemo.constants.ApplicationConstants;
+import com.newt.JacocoMutationDemo.dao.AccountSummaryDaoImpl;
+import com.newt.JacocoMutationDemo.logger.Log4jWrapper;
+
+/*
+* CODE CHANGES HISTORY
+* ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+* 	DATE		AUTHOR				METHODS MODIFIED/ADDED				CODE CHANGES DESCRIPTION
+* -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+*  12/09/2015  Harish Main      										Class initial creation. 	
+*  
+*/
+/**
+ * Class that loads Properties from properties files
+ * @date 12/09/2015
+ * @author Harish Main
+ */
+<span class="fc" id="L34">public class PropertyLoader implements ApplicationConstants {</span>
+	
+
+
+<span class="fc" id="L38">	private final static Logger logger = Logger.getLogger(AccountSummaryDaoImpl.class);</span>
+<span class="fc" id="L39">	static Log4jWrapper slog = new Log4jWrapper();</span>
+	
+	
+	
+	
+	/**
+	 * @date 12/09/2015
+	 * @author Harish Main
+	 * @description Method used to read the environment property file and get property value for property key passed
+	 * @param String as propertyKey for which needs to return property value
+	 * @return propertyValues as String
+	 */
+	public String getPropertyValue(String propertyKey){
+		
+		
+<span class="fc" id="L54">		logger.debug(&quot;Inside  PropertyLoader :: getPropertyValue, invoked...&quot;);</span>
+<span class="fc" id="L55">		String propertyValue=null;</span>
+		
+		try {
+			
+<span class="fc" id="L59">				InputStream input =  null;</span>
+				
+<span class="fc" id="L61">				Properties prop = new Properties();</span>
+<span class="fc" id="L62">				input = new FileInputStream(ENVIRONMENT_FILENAME);</span>
+				
+<span class="fc" id="L64">				prop.load(input);					</span>
+<span class="fc" id="L65">				propertyValue=prop.getProperty(propertyKey);</span>
+<span class="fc" id="L66">				logger.debug(&quot;PropertyLoader :: getPropertyValue, propertyKey:&quot;+propertyKey+&quot;, propertyValue:&quot;+propertyValue);</span>
+
+<span class="nc" id="L68">		    }catch (IOException e) {</span>
+<span class="nc" id="L69">		    	logger.error(&quot;Inside  PropertyLoader :: getPropertyValue, Exception:&quot;+e);</span>
+<span class="fc" id="L70">		   }</span>
+
+<span class="fc" id="L72">		return propertyValue;</span>
+		
+	}	
+	
+	
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

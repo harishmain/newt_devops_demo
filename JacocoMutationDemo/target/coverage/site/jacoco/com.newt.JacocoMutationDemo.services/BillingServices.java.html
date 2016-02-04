@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>BillingServices.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">MutationDemo JaCoCo</a> &gt; <a href="index.source.html" class="el_package">com.newt.JacocoMutationDemo.services</a> &gt; <span class="el_source">BillingServices.java</span></div><h1>BillingServices.java</h1><pre class="source lang-java linenums">package com.newt.JacocoMutationDemo.services;
+
+import org.apache.log4j.Logger;
+
+import com.newt.JacocoMutationDemo.bean.AccountProfile;
+import com.newt.JacocoMutationDemo.bean.AccountSummary;
+import com.newt.JacocoMutationDemo.constants.ApplicationConstants;
+import com.newt.JacocoMutationDemo.logger.Log4jWrapper;
+import com.newt.JacocoMutationDemo.test.TestAccountProfile;
+
+/**
+ * @date 02/01/2016
+ * @author Harish Main
+ * @description Class contains all Billing Services implementations methods
+ */
+public class BillingServices implements ApplicationConstants{
+	
+<span class="fc" id="L18">	private final static Logger logger = Logger.getLogger(BillingServices.class);</span>
+<span class="fc" id="L19">	static Log4jWrapper slog = new Log4jWrapper();</span>
+	
+<span class="fc" id="L21">	AccountProfile accountprofilebean=null;</span>
+<span class="fc" id="L22">	AccountSummary accountsummarybean=null;</span>
+	
+<span class="fc" id="L24">	public BillingServices(AccountProfile profilebean){</span>
+<span class="fc" id="L25">		this.accountprofilebean=profilebean;</span>
+<span class="fc" id="L26">	}</span>
+	
+<span class="fc" id="L28">	public BillingServices(AccountProfile profilebean, AccountSummary summarybean){</span>
+<span class="fc" id="L29">		this.accountprofilebean=profilebean;</span>
+<span class="fc" id="L30">		this.accountsummarybean=summarybean;</span>
+<span class="fc" id="L31">	}</span>
+
+	/**
+	 * @date 02/01/2016
+	 * @author Harish Main
+	 * @description Method used to authenticate user credentials
+	 * @param userid
+	 * @param password
+	 * @return
+	 */
+	public boolean authenticateUserCredentials(String userid, String password){
+		
+<span class="fc" id="L43">		boolean isValidUser=false;</span>
+<span class="fc" id="L44">		logger.info(&quot;Inside BillingServices :: authenticateUserCredentials() invoke... userid:&quot;+userid+&quot;, password&quot;+password);</span>
+		
+		try{
+			
+/*			if(userid.equals(accountprofilebean.getUserid()) &amp;&amp; password.equals(accountprofilebean.getPassword())){
+				isValidUser=true;
+				logger.info(&quot;Inside BillingServices :: authenticateUserCredentials(), login success &quot;);
+			}else{
+				logger.warn(&quot;Inside BillingServices :: authenticateUserCredentials(), login failed &quot;);
+			}*/
+			
+<span class="pc bpc" id="L55" title="3 of 6 branches missed.">			if((userid!=null &amp;&amp; userid.equals(accountprofilebean.getUserid())) &amp;&amp; </span>
+<span class="pc bpc" id="L56" title="1 of 2 branches missed.">					(password!=null &amp;&amp;  password.equals(accountprofilebean.getPassword()))){</span>
+<span class="fc" id="L57">				isValidUser=true;</span>
+<span class="fc" id="L58">				logger.info(&quot;Inside BillingServices :: authenticateUserCredentials(), login success &quot;);</span>
+			}else{
+<span class="nc" id="L60">				logger.warn(&quot;Inside BillingServices :: authenticateUserCredentials(), login failed &quot;);</span>
+			}
+			
+<span class="nc" id="L63">		}catch(Exception e){</span>
+<span class="nc" id="L64">			logger.error(&quot;Inside BillingServices :: authenticateUserCredentials(), Exception:&quot;+e);</span>
+<span class="fc" id="L65">		}</span>
+<span class="fc" id="L66">		return isValidUser;		</span>
+		
+	}
+	
+	public void getAccountProfile(){
+		
+		try{
+			
+<span class="pc bpc" id="L74" title="1 of 2 branches missed.">			if(accountprofilebean!=null){</span>
+<span class="fc" id="L75">				logger.info(&quot;account holder name: &quot;+accountprofilebean.getAccount_holder_name());</span>
+<span class="fc" id="L76">				logger.info(&quot;email address      : &quot;+accountprofilebean.getEmail_address());</span>
+<span class="fc" id="L77">				logger.info(&quot;Phone No           : &quot;+accountprofilebean.getPhone_no());</span>
+			}
+
+			
+<span class="nc" id="L81">		}catch(Exception e){</span>
+<span class="nc" id="L82">			logger.error(&quot;Inside BillingServices :: getAccountProfile(), Exception:&quot;+e);</span>
+<span class="fc" id="L83">		}</span>
+		
+
+		
+<span class="fc" id="L87">	}</span>
+	
+	/**
+	 * @date 02/03/2016
+	 * @author Harish Main
+	 * @description Method to calculate Total Bill Amount
+	 * @param previous_charges
+	 * @param current_charges
+	 * @return
+	 */
+	public double getTotalBillAmount(double previous_charges, double current_charges){
+		
+<span class="fc" id="L99">		double subtotal_bill_charges=0.00;</span>
+<span class="fc" id="L100">		double total_bill_charges=0.00;</span>
+<span class="fc" id="L101">		double sales_tax_amount=0.00;</span>
+		
+		try{
+			
+<span class="pc bpc" id="L105" title="2 of 4 branches missed.">			if(previous_charges&gt;=0 &amp;&amp; current_charges&gt;0){</span>
+				
+				// Calculate total bill charges
+<span class="fc" id="L108">				subtotal_bill_charges=previous_charges + current_charges ;</span>
+<span class="fc" id="L109">				sales_tax_amount=getSalesTaxAmount(subtotal_bill_charges);</span>
+				
+				// Calculate total bill charges
+<span class="fc" id="L112">				total_bill_charges=subtotal_bill_charges+sales_tax_amount;</span>
+				
+<span class="fc" id="L114">				logger.info(&quot;Inside BillingServices :: getTotalBillAmount(), total_bill_charges:&quot;+total_bill_charges);</span>
+			}
+
+
+			
+<span class="nc" id="L119">		}catch(Exception e){</span>
+<span class="nc" id="L120">			logger.error(&quot;Inside BillingServices :: getTotalBillAmount(), Exception:&quot;+e);</span>
+<span class="fc" id="L121">		}</span>
+		
+<span class="fc" id="L123">		return total_bill_charges;</span>
+		
+	}
+	
+	public double getSalesTaxAmount(double bill_total_amount){
+		
+<span class="fc" id="L129">		double sales_tax_amount=0.00;</span>
+		
+		try{
+			
+<span class="pc bpc" id="L133" title="1 of 2 branches missed.">			if(bill_total_amount&gt;0){</span>
+<span class="fc" id="L134">				sales_tax_amount=(bill_total_amount*SALES_TAX_RATE)/100;</span>
+			}
+			
+<span class="fc" id="L137">			logger.debug(&quot;Inside BillingServices :: getSalesTaxAmount(), sales_tax_amount:&quot;+sales_tax_amount);</span>
+			
+<span class="nc" id="L139">		}catch(Exception e){</span>
+<span class="nc" id="L140">			logger.error(&quot;BillingServices :: getSalesTaxAmount(), Exception: &quot;+e);</span>
+<span class="fc" id="L141">		}</span>
+		
+<span class="fc" id="L143">		return sales_tax_amount;</span>
+		
+	}		
+	
+	
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.5.201505241946</span></div></body></html>

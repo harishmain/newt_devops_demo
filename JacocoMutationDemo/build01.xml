@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="create_run_jar" name="Create Runnable Jar for Project JacocoMutationDemo with Jar-in-Jar Loader">
+    <!--this file was created by Eclipse Runnable JAR Export Wizard-->
+    <!--ANT 1.7 is required                                        -->
+    <target name="create_run_jar">
+        <jar destfile="C:/devops/Workspace/JacocoMutationDemo/JacocoMutationDemo.jar">
+            <manifest>
+                <attribute name="Main-Class" value="org.eclipse.jdt.internal.jarinjarloader.JarRsrcLoader"/>
+                <attribute name="Rsrc-Main-Class" value="com.newt.JacocoMutationDemo.test.TestAccountProfile"/>
+                <attribute name="Class-Path" value="."/>
+                <attribute name="Rsrc-Class-Path" value="./ log4j-1.2.17.jar pitest-1.1.7.jar pitest-maven-1.1.7.jar maven-plugin-api-2.2.1.jar maven-reporting-api-2.2.1.jar doxia-sink-api-1.1.jar doxia-logging-api-1.1.jar maven-reporting-impl-2.0.4.3.jar doxia-core-1.0.jar doxia-site-renderer-1.0.jar plexus-i18n-1.0-beta-7.jar plexus-velocity-1.1.7.jar velocity-1.5.jar doxia-decoration-model-1.0.jar commons-collections-3.2.jar doxia-module-apt-1.0.jar doxia-module-fml-1.0.jar doxia-module-xdoc-1.0.jar doxia-module-xhtml-1.0.jar commons-validator-1.2.0.jar commons-beanutils-1.7.0.jar commons-digester-1.6.jar commons-logging-1.0.4.jar oro-2.0.8.jar xml-apis-1.0.b2.jar maven-doxia-tools-1.0.2.jar commons-io-1.4.jar plexus-utils-1.5.8.jar maven-project-2.2.1.jar maven-settings-2.2.1.jar maven-profile-2.2.1.jar maven-model-2.2.1.jar maven-artifact-manager-2.2.1.jar maven-repository-metadata-2.2.1.jar wagon-provider-api-1.0-beta-6.jar backport-util-concurrent-3.1.jar maven-plugin-registry-2.2.1.jar plexus-interpolation-1.11.jar plexus-container-default-1.0-alpha-9-stable-1.jar classworlds-1.1-alpha-2.jar maven-scm-api-1.9.4.jar maven-scm-manager-plexus-1.9.4.jar maven-scm-provider-accurev-1.9.4.jar maven-scm-provider-bazaar-1.9.4.jar maven-scm-provider-clearcase-1.9.4.jar maven-scm-provider-cvsexe-1.9.4.jar maven-scm-provider-cvs-commons-1.9.4.jar maven-scm-provider-cvsjava-1.9.4.jar cvsclient-20060125.jar ganymed-ssh2-build210.jar maven-scm-provider-gitexe-1.9.4.jar commons-lang-2.6.jar maven-scm-provider-git-commons-1.9.4.jar maven-scm-provider-hg-1.9.4.jar maven-scm-provider-perforce-1.9.4.jar maven-scm-provider-starteam-1.9.4.jar maven-scm-provider-svnexe-1.9.4.jar maven-scm-provider-svn-commons-1.9.4.jar maven-scm-provider-synergy-1.9.4.jar maven-scm-provider-vss-1.9.4.jar maven-scm-provider-tfs-1.9.4.jar maven-scm-provider-integrity-1.9.4.jar mksapi-jar-4.10.9049.jar groovy-all-1.7.6.jar maven-scm-provider-jazz-1.9.4.jar surefire-booter-2.17.jar surefire-api-2.17.jar maven-surefire-common-2.17.jar maven-plugin-annotations-3.2.jar maven-plugin-descriptor-2.0.9.jar maven-core-2.0.9.jar maven-plugin-parameter-documenter-2.0.9.jar maven-error-diagnostics-2.0.9.jar maven-monitor-2.0.9.jar commons-lang3-3.1.jar maven-artifact-2.2.1.jar maven-toolchain-2.2.1.jar jul-to-slf4j-1.7.12.jar slf4j-api-1.7.12.jar sysout-over-slf4j-1.0.2.jar pitest-html-report-1.1.7.jar"/>
+            </manifest>
+            <zipfileset src="jar-in-jar-loader.zip"/>
+            <fileset dir="C:/devops/Workspace/JacocoMutationDemo/target/classes"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\log4j\log4j\1.2.17" includes="log4j-1.2.17.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\pitest\pitest\1.1.7" includes="pitest-1.1.7.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\pitest\pitest-maven\1.1.7" includes="pitest-maven-1.1.7.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\maven-plugin-api\2.2.1" includes="maven-plugin-api-2.2.1.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\reporting\maven-reporting-api\2.2.1" includes="maven-reporting-api-2.2.1.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\doxia\doxia-sink-api\1.1" includes="doxia-sink-api-1.1.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\doxia\doxia-logging-api\1.1" includes="doxia-logging-api-1.1.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\reporting\maven-reporting-impl\2.0.4.3" includes="maven-reporting-impl-2.0.4.3.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\doxia\doxia-core\1.0" includes="doxia-core-1.0.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\doxia\doxia-site-renderer\1.0" includes="doxia-site-renderer-1.0.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\codehaus\plexus\plexus-i18n\1.0-beta-7" includes="plexus-i18n-1.0-beta-7.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\codehaus\plexus\plexus-velocity\1.1.7" includes="plexus-velocity-1.1.7.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\velocity\velocity\1.5" includes="velocity-1.5.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\doxia\doxia-decoration-model\1.0" includes="doxia-decoration-model-1.0.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\commons-collections\commons-collections\3.2" includes="commons-collections-3.2.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\doxia\doxia-module-apt\1.0" includes="doxia-module-apt-1.0.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\doxia\doxia-module-fml\1.0" includes="doxia-module-fml-1.0.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\doxia\doxia-module-xdoc\1.0" includes="doxia-module-xdoc-1.0.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\doxia\doxia-module-xhtml\1.0" includes="doxia-module-xhtml-1.0.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\commons-validator\commons-validator\1.2.0" includes="commons-validator-1.2.0.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\commons-beanutils\commons-beanutils\1.7.0" includes="commons-beanutils-1.7.0.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\commons-digester\commons-digester\1.6" includes="commons-digester-1.6.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\commons-logging\commons-logging\1.0.4" includes="commons-logging-1.0.4.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\oro\oro\2.0.8" includes="oro-2.0.8.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\xml-apis\xml-apis\1.0.b2" includes="xml-apis-1.0.b2.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\shared\maven-doxia-tools\1.0.2" includes="maven-doxia-tools-1.0.2.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\commons-io\commons-io\1.4" includes="commons-io-1.4.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\codehaus\plexus\plexus-utils\1.5.8" includes="plexus-utils-1.5.8.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\maven-project\2.2.1" includes="maven-project-2.2.1.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\maven-settings\2.2.1" includes="maven-settings-2.2.1.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\maven-profile\2.2.1" includes="maven-profile-2.2.1.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\maven-model\2.2.1" includes="maven-model-2.2.1.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\maven-artifact-manager\2.2.1" includes="maven-artifact-manager-2.2.1.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\maven-repository-metadata\2.2.1" includes="maven-repository-metadata-2.2.1.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\wagon\wagon-provider-api\1.0-beta-6" includes="wagon-provider-api-1.0-beta-6.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\backport-util-concurrent\backport-util-concurrent\3.1" includes="backport-util-concurrent-3.1.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\maven-plugin-registry\2.2.1" includes="maven-plugin-registry-2.2.1.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\codehaus\plexus\plexus-interpolation\1.11" includes="plexus-interpolation-1.11.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\codehaus\plexus\plexus-container-default\1.0-alpha-9-stable-1" includes="plexus-container-default-1.0-alpha-9-stable-1.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\classworlds\classworlds\1.1-alpha-2" includes="classworlds-1.1-alpha-2.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\scm\maven-scm-api\1.9.4" includes="maven-scm-api-1.9.4.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\scm\maven-scm-manager-plexus\1.9.4" includes="maven-scm-manager-plexus-1.9.4.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\scm\maven-scm-provider-accurev\1.9.4" includes="maven-scm-provider-accurev-1.9.4.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\scm\maven-scm-provider-bazaar\1.9.4" includes="maven-scm-provider-bazaar-1.9.4.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\scm\maven-scm-provider-clearcase\1.9.4" includes="maven-scm-provider-clearcase-1.9.4.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\scm\maven-scm-provider-cvsexe\1.9.4" includes="maven-scm-provider-cvsexe-1.9.4.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\scm\maven-scm-provider-cvs-commons\1.9.4" includes="maven-scm-provider-cvs-commons-1.9.4.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\scm\maven-scm-provider-cvsjava\1.9.4" includes="maven-scm-provider-cvsjava-1.9.4.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\netbeans\lib\cvsclient\20060125" includes="cvsclient-20060125.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\ch\ethz\ganymed\ganymed-ssh2\build210" includes="ganymed-ssh2-build210.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\scm\maven-scm-provider-gitexe\1.9.4" includes="maven-scm-provider-gitexe-1.9.4.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\commons-lang\commons-lang\2.6" includes="commons-lang-2.6.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\scm\maven-scm-provider-git-commons\1.9.4" includes="maven-scm-provider-git-commons-1.9.4.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\scm\maven-scm-provider-hg\1.9.4" includes="maven-scm-provider-hg-1.9.4.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\scm\maven-scm-provider-perforce\1.9.4" includes="maven-scm-provider-perforce-1.9.4.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\scm\maven-scm-provider-starteam\1.9.4" includes="maven-scm-provider-starteam-1.9.4.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\scm\maven-scm-provider-svnexe\1.9.4" includes="maven-scm-provider-svnexe-1.9.4.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\scm\maven-scm-provider-svn-commons\1.9.4" includes="maven-scm-provider-svn-commons-1.9.4.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\scm\maven-scm-provider-synergy\1.9.4" includes="maven-scm-provider-synergy-1.9.4.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\scm\maven-scm-provider-vss\1.9.4" includes="maven-scm-provider-vss-1.9.4.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\scm\maven-scm-provider-tfs\1.9.4" includes="maven-scm-provider-tfs-1.9.4.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\scm\maven-scm-provider-integrity\1.9.4" includes="maven-scm-provider-integrity-1.9.4.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\com\mks\api\mksapi-jar\4.10.9049" includes="mksapi-jar-4.10.9049.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\codehaus\groovy\groovy-all\1.7.6" includes="groovy-all-1.7.6.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\scm\maven-scm-provider-jazz\1.9.4" includes="maven-scm-provider-jazz-1.9.4.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\surefire\surefire-booter\2.17" includes="surefire-booter-2.17.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\surefire\surefire-api\2.17" includes="surefire-api-2.17.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\surefire\maven-surefire-common\2.17" includes="maven-surefire-common-2.17.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\plugin-tools\maven-plugin-annotations\3.2" includes="maven-plugin-annotations-3.2.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\maven-plugin-descriptor\2.0.9" includes="maven-plugin-descriptor-2.0.9.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\maven-core\2.0.9" includes="maven-core-2.0.9.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\maven-plugin-parameter-documenter\2.0.9" includes="maven-plugin-parameter-documenter-2.0.9.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\maven-error-diagnostics\2.0.9" includes="maven-error-diagnostics-2.0.9.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\maven-monitor\2.0.9" includes="maven-monitor-2.0.9.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\commons\commons-lang3\3.1" includes="commons-lang3-3.1.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\maven-artifact\2.2.1" includes="maven-artifact-2.2.1.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\apache\maven\maven-toolchain\2.2.1" includes="maven-toolchain-2.2.1.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\slf4j\jul-to-slf4j\1.7.12" includes="jul-to-slf4j-1.7.12.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\slf4j\slf4j-api\1.7.12" includes="slf4j-api-1.7.12.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\uk\org\lidalia\sysout-over-slf4j\1.0.2" includes="sysout-over-slf4j-1.0.2.jar"/>
+            <zipfileset dir="C:\Users\Harish\.m2\repository\org\pitest\pitest-html-report\1.1.7" includes="pitest-html-report-1.1.7.jar"/>
+        </jar>
+    </target>
+</project>
