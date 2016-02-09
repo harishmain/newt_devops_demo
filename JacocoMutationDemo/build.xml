@@ -24,6 +24,8 @@
         <pathelement location="./lib/junit-4.12.jar"/>
         <pathelement location="./lib/hamcrest-all-1.3.jar"/>
 		<pathelement location="./lib/log4j-1.2.8.jar"/>
+		<pathelement location="./lib/ant-junit.jar"/>
+		<pathelement location="./lib/ant-junit4.jar"/>
 		<pathelement location="${result.classes.dir}"/>
 		<pathelement location="${result.test.classes.dir}"/>
     </path>
